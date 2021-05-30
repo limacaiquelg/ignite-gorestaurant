@@ -1,7 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import ReactModal from 'react-modal';
 
-export function Modal(props) {
+interface ModalProps {
+  isOpen: boolean;
+  setIsOpen: () => void;
+  children: ReactNode;
+}
+
+export function Modal(props: ModalProps) {
   const [ modalStatus, setModalStatus ] = useState(false);
 
   useEffect(() => {
@@ -14,7 +20,7 @@ export function Modal(props) {
       shouldCloseOnOverlayClick={!false}
       onRequestClose={ props.setIsOpen }
       isOpen={ modalStatus }
-      ariaHideApp={false}
+      ariaHideApp={ false }
       style={{
         content: {
           top: '50%',

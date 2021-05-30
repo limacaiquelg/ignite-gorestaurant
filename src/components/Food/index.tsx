@@ -3,8 +3,15 @@ import { FiEdit3, FiTrash } from 'react-icons/fi';
 
 import { Container } from './styles';
 import { api } from '../../services/api';
+import { FoodItem } from '../../types';
 
-export function Food(props) {
+interface FoodProps {
+  food: FoodItem;
+  handleEditFood: (food: FoodItem) => void;
+  handleDelete: (id: number) => void;
+}
+
+export function Food(props: FoodProps) {
   const [ isAvailable, setIsAvailable ] = useState(false);
 
   useEffect(() => {
